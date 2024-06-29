@@ -1,0 +1,1 @@
+Este projeto faz parte de uma atividade da faculdade. As imagens de fundo foram elaboradas pelo Copilot da Microsoft e foram salvas no meu computador. O código é simples para o cálculo de quantidades para fazer um churrascão. Futuramente adicionarei mais funções.
