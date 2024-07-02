@@ -6,8 +6,7 @@
   <link rel="shortcut icon" type="imagex/png" href="./images/churrasco.ico">
   <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
-<body> <!--achei melhor incluir o javascript no html para facilitar a edição do código e 
-  evitar problemas na hora de abrir o documento compactado-->
+<body>
   <section id="container">
     <h1 id="titulo">CALCULADORA CHURRASCÃO &#127830</h1>
     <p id="descricao"> Insira abaixo a quantidade de participantes do churras:</p>
@@ -31,55 +30,63 @@
       <p id="cerva">Litros de cerveja:</p>
     </div>
   </section>
-
-
   <script>
     function handleSubmit() {
-      let qtH = parseInt(document.getElementById("homens").value);
-      let qtM= parseInt(document.getElementById("mulheres").value);
-      let qtC = parseInt(document.getElementById("criancas").value);
+ 
+  let qtH = parseInt(document.getElementById("homens").value);
+  let qtM = parseInt(document.getElementById("mulheres").value);
+  let qtC = parseInt(document.getElementById("criancas").value);
 
 
-      // Quantidades por pessoa
-      let carneBoiH = 0.5;
-      let frangoH = 0.2;
-      let linguicaH = 0.2;
-      let refriH = 0.3;
-      let cervejaH = 0.8;
+
+//alteração necessária para evitar erro NaN, não previ essa necessidade por não ter feito os testes:
+//quando o usuário não digita um valor para um campo 
+//quando um valor diferente de um número é informado
+      
+  qtH = isNaN(qtH) ? 0 : qtH;
+  qtM = isNaN(qtM) ? 0 : qtM;
+  qtC = isNaN(qtC) ? 0 : qtC;
 
 
-      let carneBoiM = 0.3;
-      let frangoM = 0.2;
-      let linguicaM = 0.2;
-      let refriM = 0.4;
-      let cervejaM = 0.5;
+  
+  let carneBoiH = 0.5;
+  let frangoH = 0.2;
+  let linguicaH = 0.2;
+  let refriH = 0.3;
+  let cervejaH = 0.8;
 
 
-      let carneBoiC = 0.2;
-      let frangoC = 0.1;
-      let linguicaC = 0.2;
-      let refriC = 0.4;
-      let cervejaC = 0;
+  let carneBoiM = 0.3;
+  let frangoM = 0.2;
+  let linguicaM = 0.2;
+  let refriM = 0.4;
+  let cervejaM = 0.5;
 
 
-      // Calculando total de cada item
-      let totalCarne = qtH * carneBoiH + qtM * carneBoiM + qtC * carneBoiC;
-      let totalFrango = qtH * frangoH + qtM * frangoM + qtC * frangoC;
-      let totalLinguica = qtH * linguicaH + qtM * linguicaM + qtC * linguicaC;
-      let totalRefri = qtH * refriH + qtM * refriM + qtC * refriC;
-      let totalCerva = qtH * cervejaH + qtM * cervejaM + qtC * cervejaC;
+  let carneBoiC = 0.2;
+  let frangoC = 0.1;
+  let linguicaC = 0.2;
+  let refriC = 0.4;
+  let cervejaC = 0;
 
 
-      // Atualizando os resultados na página
-      document.getElementById("carne").textContent = `Quantidade de Carne: ${totalCarne} kg`;
-      document.getElementById("frango").textContent = `Quantidade de Frango: ${totalFrango} kg`;
-      document.getElementById("linguica").textContent = `Quantidade de Linguiça: ${totalLinguica} kg`;
-      document.getElementById("refri").textContent = `Quantidade de Refrigerante: ${totalRefri} litros`;
-      document.getElementById("cerva").textContent = `Quantidade de Cerveja: ${totalCerva} litros`;
+ 
+  let totalCarne = qtH * carneBoiH + qtM * carneBoiM + qtC * carneBoiC;
+  let totalFrango = qtH * frangoH + qtM * frangoM + qtC * frangoC;
+  let totalLinguica = qtH * linguicaH + qtM * linguicaM + qtC * linguicaC;
+  let totalRefri = qtH * refriH + qtM * refriM + qtC * refriC;
+  let totalCerva = qtH * cervejaH + qtM * cervejaM + qtC * cervejaC;
 
 
-    }
+ //defini uma casa apenas para facilitar a exibição do resultado, já que são apenas números inteiros usados
+  document.getElementById("carne").textContent = `Quantidade de Carne: ${totalCarne.toFixed(1)} kg`;
+  document.getElementById("frango").textContent = `Quantidade de Frango: ${totalFrango.toFixed(1)} kg`;
+  document.getElementById("linguica").textContent = `Quantidade de Linguiça: ${totalLinguica.toFixed(1)} kg`;
+  document.getElementById("refri").textContent = `Quantidade de Refrigerante: ${totalRefri.toFixed(1)} litros`;
+  document.getElementById("cerva").textContent = `Quantidade de Cerveja: ${totalCerva.toFixed(1)} litros`;
+}
+
+
   </script>
 </body>
 </html>
-
